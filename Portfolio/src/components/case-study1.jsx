@@ -1,189 +1,534 @@
-import { GitBranch, Lightbulb } from "lucide-react";
-import { cn } from "cn";
+import { ExternalLink, ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@/components/ui/breadcrumb";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
 const CaseStudy1 = ({ project, className }) => {
+  if (!project) {
+    return (
+      <section className="py-32">
+        <div className="container">
+          <h1 className="text-3xl font-bold">Project not found</h1>
+          <p className="mt-3 text-muted-foreground">
+            The requested project could not be found.
+          </p>
+        </div>
+      </section>
+    );
+  }
+
   return (
-    <section className={cn("py-32", className)}>
+    <article className={cn("py-20 lg:py-28", className)}>
       <div className="container">
-        <div className="mx-auto max-w-7xl">
-          <Breadcrumb className="mb-6 lg:mb-10">
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink href="/">Home</BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator>/</BreadcrumbSeparator>
-              <BreadcrumbItem>
-                <BreadcrumbPage>Components</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-          <div className="relative flex-col gap-10 lg:flex lg:flex-row lg:justify-between">
-            <div className="lg:max-w-[692px]">
-              <div className="max lg:col-span-2">
-                <div>
-                  <h1 className="text-3xl font-extrabold text-pretty">
-                    {project?.title}
-                  </h1>
-                  <p className="mt-2 text-lg text-muted-foreground">
-                    {project?.summary}
-                  </p>
-                  <img
-                    src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
-                    alt="placeholder"
-                    className="my-8 aspect-video w-full rounded-lg object-cover"
-                  />
-                  <div className="mb-8 grid grid-cols-2 gap-5 lg:grid-cols-4">
-                    <div className="flex flex-col gap-2">
-                      <p className="text-4xl font-semibold sm:text-5xl">19%</p>
-                      <p className="text-sm text-muted-foreground">
-                        increase in user engagement rate
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <p className="text-4xl font-semibold sm:text-5xl">28%</p>
-                      <p className="text-sm text-muted-foreground">
-                        growth in customer retention rate
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <p className="text-4xl font-semibold sm:text-5xl">72%</p>
-                      <p className="text-sm text-muted-foreground">
-                        satisfaction rate among users and customers
-                      </p>
-                    </div>
-                    <div className="flex flex-col gap-2">
-                      <p className="text-4xl font-semibold sm:text-5xl">
-                        &gt;85%
-                      </p>
-                      <p className="text-sm text-muted-foreground">
-                        positive feedback received from users
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="prose mb-8 max-w-full lg:max-w-prose dark:prose-invert">
-                  <h2>How the Tax System Works</h2>
-                  <p>
-                    The king, seeing how much happier his subjects were,
-                    realized the error of his ways and repealed the joke tax.
-                    Jokester was declared a hero, and the kingdom lived happily
-                    ever after.
-                  </p>
-                  <Alert>
-                    <Lightbulb className="h-4 w-4" />
-                    <AlertTitle>Royal Decree!</AlertTitle>
-                    <AlertDescription>
-                      Remember, all jokes must be registered at the Royal Jest
-                      Office before telling them
-                    </AlertDescription>
-                  </Alert>
+        <div className="mx-auto max-w-6xl">
 
-                  <h2>The People&apos;s Rebellion</h2>
-                  <p>
-                    The people of the kingdom, feeling uplifted by the laughter,
-                    started to tell jokes and puns again, and soon the entire
-                    kingdom was in on the joke.
-                  </p>
-                  <div>
-                    <table>
-                      <thead>
-                        <tr>
-                          <th>King&apos;s Treasury</th>
-                          <th>People&apos;s happiness</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>Empty</td>
-                          <td>Overflowing</td>
-                        </tr>
-                        <tr className="m-0 border-t p-0 even:bg-muted">
-                          <td>Modest</td>
-                          <td>Satisfied</td>
-                        </tr>
-                        <tr className="m-0 border-t p-0 even:bg-muted">
-                          <td>Full</td>
-                          <td>Ecstatic</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                  <p>
-                    The king, seeing how much happier his subjects were,
-                    realized the error of his ways and repealed the joke tax.
-                    Jokester was declared a hero, and the kingdom lived happily
-                    ever after.
-                  </p>
+          {/* Hero */}
+          <header className="max-w-4xl">
+            <Badge variant="secondary" className="mb-6">
+              {project.category}
+            </Badge>
 
-                  <h2>The King&apos;s Plan</h2>
-                  <p>
-                    The king thought long and hard, and finally came up with{" "}
-                    <a href="#">a brilliant plan</a>: he would tax the jokes in
-                    the kingdom.
-                  </p>
-                  <blockquote>
-                    &ldquo;After all,&rdquo; he said, &ldquo;everyone enjoys a
-                    good joke, so it&apos;s only fair that they should pay for
-                    the privilege.&rdquo;
-                  </blockquote>
-                  <p>
-                    The king&apos;s subjects were not amused. They grumbled and
-                    complained, but the king was firm:
-                  </p>
-                  <ul>
-                    <li>1st level of puns: 5 gold coins</li>
-                    <li>2nd level of jokes: 10 gold coins</li>
-                    <li>3rd level of one-liners : 20 gold coins</li>
-                  </ul>
-                  <p>
-                    As a result, people stopped telling jokes, and the kingdom
-                    fell into a gloom. But there was one person who refused to
-                    let the king&apos;s foolishness get him down: a court jester
-                    named Jokester.
-                  </p>
-                </div>
-              </div>
+            <h1 className="text-5xl font-extrabold tracking-tight text-pretty md:text-6xl lg:text-7xl">
+              {project.title}
+            </h1>
+
+            <p className="mt-6 max-w-3xl text-xl leading-relaxed text-muted-foreground">
+              {project.summary}
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              {project.projectUrl && (
+                <Button asChild>
+                  <a
+                    href={project.projectUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    View Project
+                    <ExternalLink />
+                  </a>
+                </Button>
+              )}
             </div>
-            <div className="h-fit lg:sticky lg:top-8 lg:max-w-80">
-              <img
-                src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/company/fictional-company-logo-3.svg"
-                alt="logo"
-                className="mb-8 w-36"
-              />
-              <p className="mb-1.5 text-sm font-semibold">Overview</p>
-              <p className="mb-5 text-sm text-muted-foreground">
-                Our client implemented our solution to transform their business
-                operations, resulting in improved efficiency, enhanced customer
-                experience, and significant cost savings across their entire
-                organization.
+          </header>
+
+          <Separator className="my-12" />
+
+          {/* Project metadata */}
+          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div>
+              <p className="text-sm font-semibold">Context</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {project.context}
               </p>
-              <p className="mb-1.5 text-sm font-semibold">Sector</p>
-              <p className="mb-5 text-sm text-muted-foreground">Technology</p>
-              <p className="mb-1.5 text-sm font-semibold">Solution</p>
-              <Button size="sm" variant="outline">
-                <GitBranch className="opacity-60" />
-                Enterprise
-              </Button>
-              <Separator className="my-5" />
-              <p className="mb-3 text-sm font-semibold">Want to learn more?</p>
-              <Button size="sm">Contact us</Button>
             </div>
+
+            <div>
+              <p className="text-sm font-semibold">Type</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {project.type}
+              </p>
+            </div>
+
+            <div>
+              <p className="text-sm font-semibold">Team</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {project.team}
+              </p>
+            </div>
+
+            <div>
+              <p className="text-sm font-semibold">Year</p>
+              <p className="mt-2 text-sm text-muted-foreground">
+                {project.published}
+              </p>
+            </div>
+          </div>
+
+          {/* Main content */}
+          <div className="mt-16 grid gap-16 lg:grid-cols-[1fr_280px]">
+
+            {/* Article */}
+            <div className="max-w-3xl space-y-14">
+
+              {/* Overview */}
+              <section>
+                <h2 className="text-3xl font-bold tracking-tight">
+                  Project Overview
+                </h2>
+
+                <div className="mt-6 space-y-5 text-base leading-8 text-muted-foreground">
+                  <p>
+                    PhobiaVR was developed during an AR/VR workshop as an
+                    exploration of immersive virtual environments and their
+                    potential use in exposure-oriented experiences.
+                  </p>
+
+                  <p>
+                    Rather than presenting a single static VR scene, the
+                    project organizes its experiences around different
+                    phobias. Each experience contains three progressively
+                    more intense scenarios, allowing the user to move through
+                    increasing levels of difficulty.
+                  </p>
+
+                  <p>
+                    The project was developed collaboratively by a team of
+                    ten participants and was experienced using the Meta Quest
+                    3S.
+                  </p>
+                </div>
+              </section>
+
+              {/* Concept */}
+              <section>
+                <h2 className="text-3xl font-bold tracking-tight">
+                  The Concept
+                </h2>
+
+                <div className="mt-6 space-y-5 text-base leading-8 text-muted-foreground">
+                  <p>
+                    The central idea behind PhobiaVR is to use immersive
+                    environments to represent situations associated with
+                    different fears. Virtual reality makes it possible to
+                    construct environments that would be difficult,
+                    impractical, or unsafe to reproduce physically.
+                  </p>
+
+                  <p>
+                    The experience therefore focuses on controlled virtual
+                    scenarios rather than simply placing the user inside a
+                    conventional game environment.
+                  </p>
+                </div>
+              </section>
+
+              {/* Progressive system */}
+              <section>
+                <h2 className="text-3xl font-bold tracking-tight">
+                  Progressive Intensity
+                </h2>
+
+                <div className="mt-6 space-y-5 text-base leading-8 text-muted-foreground">
+                  <p>
+                    A major part of the experience is the three-level
+                    progression system. Every therapy session begins with a
+                    lower-intensity scenario and progresses toward a more
+                    demanding environment.
+                  </p>
+
+                  <p>
+                    This structure gives the project a clear progression
+                    instead of treating each VR scene as an isolated
+                    experience.
+                  </p>
+                </div>
+
+                <div className="mt-8 grid gap-4 sm:grid-cols-3">
+                  <div className="rounded-xl border p-5">
+                    <p className="font-semibold">Level 1</p>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Introduction to the scenario
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl border p-5">
+                    <p className="font-semibold">Level 2</p>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Increased environmental intensity
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl border p-5">
+                    <p className="font-semibold">Level 3</p>
+                    <p className="mt-2 text-sm text-muted-foreground">
+                      Highest-intensity scenario
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Sessions */}
+              <section>
+                <h2 className="text-3xl font-bold tracking-tight">
+                  The Four Experiences
+                </h2>
+
+                <div className="mt-8 space-y-6">
+
+                  <div className="rounded-2xl border p-6">
+                    <h3 className="text-xl font-semibold">
+                      Social Anxiety
+                    </h3>
+
+                    <p className="mt-3 leading-7 text-muted-foreground">
+                      The Social Anxiety experience progresses through an
+                      interrogation room, a live television broadcast, and
+                      finally a World Arena Summit involving an increasingly
+                      public and socially demanding environment.
+                    </p>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      <Badge variant="outline">
+                        Level 1 · Interrogation Room
+                      </Badge>
+
+                      <Badge variant="outline">
+                        Level 2 · Live TV Broadcast
+                      </Badge>
+
+                      <Badge variant="outline">
+                        Level 3 · World Arena Summit
+                      </Badge>
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border p-6">
+                    <h3 className="text-xl font-semibold">
+                      Acrophobia
+                    </h3>
+
+                    <p className="mt-3 leading-7 text-muted-foreground">
+                      The Acrophobia experience focuses on increasingly
+                      extreme situations involving height. The progression
+                      moves from a collapsing skyscraper to a volcanic
+                      environment and eventually a space-station scenario.
+                    </p>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      <Badge variant="outline">
+                        Level 1 · Collapsing Skyscraper — 300m
+                      </Badge>
+
+                      <Badge variant="outline">
+                        Level 2 · Volcano Rim — 3,700m
+                      </Badge>
+
+                      <Badge variant="outline">
+                        Level 3 · Space Station — 400km
+                      </Badge>
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border p-6">
+                    <h3 className="text-xl font-semibold">
+                      Aquaphobia
+                    </h3>
+
+                    <p className="mt-3 leading-7 text-muted-foreground">
+                      The Aquaphobia scenarios progressively move the user
+                      from an approaching tsunami toward an underwater
+                      shipwreck and finally the extreme depth represented by
+                      the Mariana Trench.
+                    </p>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      <Badge variant="outline">
+                        Level 1 · Tsunami Approach
+                      </Badge>
+
+                      <Badge variant="outline">
+                        Level 2 · Shipwreck Abyss — 120m
+                      </Badge>
+
+                      <Badge variant="outline">
+                        Level 3 · Mariana Trench — 10,916m
+                      </Badge>
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border p-6">
+                    <h3 className="text-xl font-semibold">
+                      Nyctophobia
+                    </h3>
+
+                    <p className="mt-3 leading-7 text-muted-foreground">
+                      The Nyctophobia experience uses darkness and limited
+                      visibility as its central environmental element. The
+                      progression moves through an abandoned hospital,
+                      underground catacombs, and finally an environment
+                      referred to as The Void.
+                    </p>
+
+                    <div className="mt-5 flex flex-wrap gap-2">
+                      <Badge variant="outline">
+                        Level 1 · Abandoned Hospital
+                      </Badge>
+
+                      <Badge variant="outline">
+                        Level 2 · Underground Catacombs
+                      </Badge>
+
+                      <Badge variant="outline">
+                        Level 3 · The Void
+                      </Badge>
+                    </div>
+                  </div>
+
+                </div>
+              </section>
+
+              {/* Acrophobia */}
+              <section>
+                <h2 className="text-3xl font-bold tracking-tight">
+                  Inside the Acrophobia Experience
+                </h2>
+
+                <div className="mt-6 space-y-5 text-base leading-8 text-muted-foreground">
+                  <p>
+                    The Acrophobia session provides a good example of how
+                    PhobiaVR turns an abstract fear into an interactive
+                    virtual scenario.
+                  </p>
+
+                  <p>
+                    In the recorded experience, the user begins in an
+                    elevated environment. The surrounding structure and open
+                    space establish the sensation of height before the
+                    scenario becomes more intense.
+                  </p>
+
+                  <p>
+                    As the sequence progresses, the environment introduces a
+                    falling event. The experience changes visually during the
+                    fall and eventually reaches a high-intensity state
+                    accompanied by a falling indicator and a restart
+                    interaction.
+                  </p>
+
+                  <p>
+                    This sequence demonstrates that the project is not simply
+                    a collection of 3D environments. The scenes are designed
+                    around sequences of events that guide the user's
+                    experience.
+                  </p>
+                </div>
+              </section>
+
+              {/* Team */}
+              <section>
+                <h2 className="text-3xl font-bold tracking-tight">
+                  Building It as a Team
+                </h2>
+
+                <div className="mt-6 space-y-5 text-base leading-8 text-muted-foreground">
+                  <p>
+                    PhobiaVR was created by a ten-member team during the
+                    Young Innovator&apos;s Lab AR/VR workshop at CUSAT.
+                  </p>
+
+                  <p>
+                    The project was developed collaboratively, with the team
+                    working together across the different parts of the
+                    experience. Because the project was a shared workshop
+                    effort, individual ownership of specific components is not
+                    being retrospectively assigned to a single team member.
+                  </p>
+
+                  <p>
+                    For my portfolio, I am therefore documenting PhobiaVR as
+                    a collaborative team project rather than claiming
+                    ownership of a particular subsystem that I cannot
+                    accurately attribute.
+                  </p>
+                </div>
+              </section>
+
+              {/* Workshop */}
+              <section>
+                <h2 className="text-3xl font-bold tracking-tight">
+                  Workshop Context
+                </h2>
+
+                <div className="mt-6 space-y-5 text-base leading-8 text-muted-foreground">
+                  <p>
+                    The project was developed as part of an AR/VR workshop
+                    conducted through the Young Innovator&apos;s Lab at CUSAT.
+                    The workshop provided the context for exploring immersive
+                    technologies and building a working project around them.
+                  </p>
+
+                  <p>
+                    One of the most valuable aspects of the project was the
+                    opportunity to move beyond learning about VR concepts and
+                    actually create and deploy an interactive experience.
+                  </p>
+                </div>
+              </section>
+
+              {/* Lessons */}
+              <section>
+                <h2 className="text-3xl font-bold tracking-tight">
+                  What I Learned
+                </h2>
+
+                <div className="mt-6 space-y-5 text-base leading-8 text-muted-foreground">
+                  <p>
+                    Working on PhobiaVR provided practical exposure to the
+                    design of immersive experiences and the importance of
+                    thinking about a user's experience as a sequence rather
+                    than as a collection of isolated features.
+                  </p>
+
+                  <p>
+                    The project also highlighted the importance of
+                    collaboration when building an experience involving
+                    multiple environments, scenarios, and interaction
+                    sequences.
+                  </p>
+
+                  <p>
+                    Most importantly, it gave me an opportunity to work with
+                    AR/VR technology in a hands-on setting and experience the
+                    process of turning an idea into a deployable project.
+                  </p>
+                </div>
+              </section>
+
+              {/* Future */}
+              <section>
+                <h2 className="text-3xl font-bold tracking-tight">
+                  Future Improvements
+                </h2>
+
+                <div className="mt-6 space-y-5 text-base leading-8 text-muted-foreground">
+                  <p>
+                    A future version could expand the number of environments
+                    and introduce more detailed interaction within each
+                    scenario.
+                  </p>
+
+                  <p>
+                    Additional progression controls, session tracking,
+                    configurable intensity, and richer environmental feedback
+                    could also make the experience more adaptable to
+                    different users.
+                  </p>
+
+                  <p>
+                    Any real therapeutic deployment would additionally
+                    require appropriate clinical validation, safety
+                    considerations, and professional oversight.
+                  </p>
+                </div>
+              </section>
+
+            </div>
+
+            {/* Sidebar */}
+            <aside className="lg:sticky lg:top-8 lg:h-fit">
+
+              <div className="rounded-2xl border p-6">
+
+                <p className="text-sm font-semibold">
+                  Project Information
+                </p>
+
+                <div className="mt-6 space-y-5">
+
+                  <div>
+                    <p className="text-xs uppercase tracking-wide text-muted-foreground">
+                      Project
+                    </p>
+                    <p className="mt-1 font-medium">
+                      {project.title}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-xs uppercase tracking-wide text-muted-foreground">
+                      Category
+                    </p>
+                    <p className="mt-1 font-medium">
+                      {project.category}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-xs uppercase tracking-wide text-muted-foreground">
+                      Team
+                    </p>
+                    <p className="mt-1 font-medium">
+                      {project.team}
+                    </p>
+                  </div>
+
+                  <div>
+                    <p className="text-xs uppercase tracking-wide text-muted-foreground">
+                      Platform
+                    </p>
+                    <p className="mt-1 font-medium">
+                      Meta Quest 3S
+                    </p>
+                  </div>
+
+                </div>
+
+                <Separator className="my-6" />
+
+                {project.projectUrl && (
+                  <Button asChild className="w-full">
+                    <a
+                      href={project.projectUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Open PhobiaVR
+                      <ArrowUpRight />
+                    </a>
+                  </Button>
+                )}
+
+              </div>
+
+            </aside>
+
           </div>
         </div>
       </div>
-    </section>
+    </article>
   );
 };
 

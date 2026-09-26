@@ -1,16 +1,18 @@
+import phobiavrCover from "../assets/projects/phobiavr/Pasted image.png"
 export const projects = [
-  {
-    id: "phobiavr",
-    title: "PhobiaVR",
-    category: "AR/VR",
-    type: "Workshop Project",
-    summary:
-      "An immersive virtual reality project exploring the possibilities of VR technology and its potential applications.",
-    published: "2026",
-    team: "Team of 10",
-    context: "AR/VR Workshop – Young Innovator's Lab",
-    projectUrl: "https://realityforge.vercel.app/",
-  },
+{
+  id: "phobiavr",
+  title: "PhobiaVR",
+  category: "AR/VR",
+  type: "Workshop Project",
+  summary:
+    "An immersive VR experience built around progressively intense scenarios representing different phobias.",
+  published: "2026",
+  team: "Team of 10",
+  context: "AR/VR Workshop – Young Innovator's Lab",
+  image: phobiavrCover,
+  projectUrl: "https://realityforge.vercel.app/",
+},
 
   {
     id: "thuna",
