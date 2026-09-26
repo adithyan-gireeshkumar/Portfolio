@@ -30,7 +30,13 @@ const defaultProps = {
 };
 
 const Cta39 = (props) => {
-  const { heading, description, buttons, className } = {
+  const {
+    heading,
+    description,
+    buttons,
+    className,
+    onPrimaryClick,
+  } = {
     ...defaultProps,
     ...props,
   };
@@ -56,14 +62,7 @@ const Cta39 = (props) => {
                 <Button
                   size="lg"
                   className="bg-black text-white hover:bg-black/90"
-                  render={
-                    <a
-                      href={buttons.primary.url}
-                      target={buttons.primary.url.startsWith("http") ? "_blank" : undefined}
-                      rel={buttons.primary.url.startsWith("http") ? "noreferrer" : undefined}
-                    />
-                  }
-                  nativeButton={false}
+                  onClick={onPrimaryClick}
                 >
                   {buttons.primary.text}
                 </Button>
