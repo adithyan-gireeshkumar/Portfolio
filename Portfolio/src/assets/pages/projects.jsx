@@ -1,6 +1,6 @@
 import { Blog7 } from "@/components/blog7";
 
-function Projects({ onBack, onOpenCaseStudy1 }) {
+function Projects({ onBack, onOpenProject }) {
   return (
     <div>
       <div className="flex justify-start px-6 py-6">
@@ -12,7 +12,8 @@ function Projects({ onBack, onOpenCaseStudy1 }) {
           ← Back to home
         </button>
       </div>
-      <Blog7 onTitleClick={onOpenCaseStudy1} />
+
+      <Blog7 onTitleClick={onOpenProject} />
     </div>
   );
 }

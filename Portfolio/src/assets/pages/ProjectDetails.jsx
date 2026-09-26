@@ -1,6 +1,11 @@
-import { CaseStudy1} from "../../components/case-study1";
+import { CaseStudy1 } from "../../components/case-study1";
+import { projects } from "@/data/projects";
 
-function ProjectDetails({ onBack }) {
+function ProjectDetails({ projectId, onBack }) {
+  const project = projects.find(
+    (project) => project.id === projectId
+  );
+
   return (
     <>
       <div className="px-6 py-6">
@@ -12,7 +17,8 @@ function ProjectDetails({ onBack }) {
           ← Back to projects
         </button>
       </div>
-      <CaseStudy1 />
+
+      <CaseStudy1 project={project} />
     </>
   );
 }

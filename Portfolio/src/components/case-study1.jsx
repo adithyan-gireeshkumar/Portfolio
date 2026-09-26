@@ -13,9 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-const CaseStudy1 = ({
-  className
-}) => {
+const CaseStudy1 = ({ project, className }) => {
   return (
     <section className={cn("py-32", className)}>
       <div className="container">
@@ -36,12 +34,10 @@ const CaseStudy1 = ({
               <div className="max lg:col-span-2">
                 <div>
                   <h1 className="text-3xl font-extrabold text-pretty">
-                    Boosting System Reliability by 125% with AI Monitoring
+                    {project?.title}
                   </h1>
                   <p className="mt-2 text-lg text-muted-foreground">
-                    In a kingdom far away, where laughter once flowed freely, a
-                    peculiar tale unfolded about a king who decided to tax the
-                    very essence of joy itself - jokes and jest.
+                    {project?.summary}
                   </p>
                   <img
                     src="https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-1.svg"
