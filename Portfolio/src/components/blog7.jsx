@@ -17,13 +17,13 @@ const Blog7 = ({
   posts = [
     {
       id: "post-1",
-      title: "Getting Started with shadcn/ui Components",
+      title: "PhobiaVR",
       summary:
-        "Learn how to quickly integrate and customize shadcn/ui components in your Next.js projects. We'll cover installation, theming, and best practices for building modern interfaces.",
-      label: "Tutorial",
-      author: "Sarah Chen",
-      published: "1 Jan 2024",
-      url: "https://www.shadcnblocks.com",
+        "Explore the world of virtual reality and how it can be used to help people overcome their fears..",
+      label: "Project",
+      author: "Team Reality Forges",
+      published: "26 sep 2026",
+      url: "#",
       image:
         "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
     },
@@ -52,11 +52,20 @@ const Blog7 = ({
         "https://deifkwefumgah.cloudfront.net/shadcnblocks/block/placeholder-dark-1.svg",
     },
   ],
-
+  onTitleClick,
   className
 }) => {
+  const handlePostClick = (event, post) => {
+    if (post.id === "post-1" && onTitleClick) {
+      event.preventDefault();
+      onTitleClick();
+    }
+  };
+
   return (
-    <section className={cn("py-32", className)}>
+    <section className={cn("py-32", className)} style={{
+      background: "linear-gradient(302deg, #7fe1de 0%, #0f85fa 50%, #0fe7fa 100%)",
+    }}>
       <div className="container mx-auto flex flex-col items-center gap-8">
         <div className="text-center">
           <Badge variant="secondary" className="mb-6">
@@ -79,6 +88,7 @@ const Blog7 = ({
                 <a
                   href={post.url}
                   target="_blank"
+                  onClick={(event) => handlePostClick(event, post)}
                   className="transition-opacity duration-200 fade-in hover:opacity-70"
                 >
                   <img
@@ -90,7 +100,11 @@ const Blog7 = ({
               </div>
               <CardHeader>
                 <h3 className="text-xl hover:underline md:text-xl">
-                  <a href={post.url} target="_blank">
+                  <a
+                    href={post.url}
+                    target="_blank"
+                    onClick={(event) => handlePostClick(event, post)}
+                  >
                     {post.title}
                   </a>
                 </h3>
@@ -107,6 +121,7 @@ const Blog7 = ({
                 <a
                   href={post.url}
                   target="_blank"
+                  onClick={(event) => handlePostClick(event, post)}
                   className="flex items-center text-muted-foreground hover:underline"
                 >
                   Read more

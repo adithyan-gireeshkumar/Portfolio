@@ -9,7 +9,7 @@ function Blogpost2({ className }) {
     <section
       className={cn("py-32 mt-0", className)}
       style={{
-        background: "linear-gradient(35deg, #0f23fa 0%, #0f85fa 50%, #0fe7fa 100%)",
+        background: "linear-gradient(302deg, #7fe1de 0%, #0f85fa 50%, #0fe7fa 100%)",
       }}
     >
       <div className="container mt-0 ml-3">
