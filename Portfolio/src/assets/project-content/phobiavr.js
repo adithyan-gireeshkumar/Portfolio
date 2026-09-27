@@ -1,9 +1,10 @@
+import phobiaVRImage from "../project-content/phobiavr/Pasted image.png";
 export const phobiavrContent = {
   sections: [
     {
       type: "text",
       title: "Project Overview",
-      image: src="../../assets/project-content/phobiavr/Pasted image.png",
+      image: phobiaVRImage,
       paragraphs: [
         "PhobiaVR is an immersive virtual reality project developed during the AR/VR Workshop at Young Innovator's Lab, CUSAT.",
         "The project explores how virtual environments can be used to represent progressively intense scenarios associated with different phobias.",

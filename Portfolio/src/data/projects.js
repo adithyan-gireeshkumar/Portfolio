@@ -1,4 +1,5 @@
-import phobiavrCover from "../assets/project-content/phobiavr/Pasted image.png"
+import phobiavrCover from "../assets/project-content/phobiavr /Pasted image.png"
+import { phobiavrContent } from "../assets/project-content/phobiavr";
 export const projects = [
 {
   id: "phobiavr",
@@ -12,6 +13,7 @@ export const projects = [
   context: "AR/VR Workshop – Young Innovator's Lab",
   image: phobiavrCover,
   projectUrl: "https://realityforge.vercel.app/",
+  content: phobiavrContent,
 },
 
   {
