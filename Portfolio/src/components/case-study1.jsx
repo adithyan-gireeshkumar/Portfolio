@@ -5,20 +5,16 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 
-const content = project?.content;
 const CaseStudy1 = ({ project, className }) => {
-  if (!project) {
-    {content && (
-  <div className="mx-auto max-w-4xl px-6 py-8">
-    <p className="text-sm text-muted-foreground">
-      {content.sections.length} sections loaded
-    </p>
-  </div>
-)}
+  const content = project?.content;
+   if (!project) {
     return (
       <section className="py-32">
         <div className="container">
-          <h1 className="text-3xl font-bold">Project not found</h1>
+          <h1 className="text-3xl font-bold">
+            Project not found
+          </h1>
+
           <p className="mt-3 text-muted-foreground">
             The requested project could not be found.
           </p>

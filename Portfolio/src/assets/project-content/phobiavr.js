@@ -1,4 +1,4 @@
-import phobiaVRImage from "../project-content/phobiavr/Pasted image.png";
+import phobiaVRImage from "./phobiavr/Pasted image.png";
 export const phobiavrContent = {
   sections: [
     {
