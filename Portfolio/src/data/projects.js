@@ -1,4 +1,4 @@
-import phobiavrCover from "../assets/projects/phobiavr/Pasted image.png"
+import phobiavrCover from "../assets/project-content/phobiavr/Pasted image.png"
 export const projects = [
 {
   id: "phobiavr",
