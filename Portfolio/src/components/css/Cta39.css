@@ -1,0 +1,49 @@
+.spotlight{
+    position: relative;
+    width: 100%;
+    min-height: 22rem;
+    background-color: hsl(0, 0%, 100%);
+    overflow: hidden;
+    border-radius: 1rem;
+    box-shadow: 10px 5px 20px black;
+}
+.cards{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: min(100% - 1.5rem, 58rem);
+    height: 16rem;
+    transform: translate(-50%, -50%);
+}
+.card{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: clamp(7rem, 18vw, 11rem);
+    height: clamp(7rem, 18vw, 11rem);
+    border-radius: 1rem;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 10px 5px 20px black;
+}
+.card img{
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 1rem;
+    object-fit: contain;
+    background: #fff;
+}
+
+@media (max-width: 640px){
+    .cards{
+        height: 12rem;
+    }
+
+    .card{
+        width: clamp(5rem, 22vw, 7rem);
+        height: clamp(5rem, 22vw, 7rem);
+    }
+}

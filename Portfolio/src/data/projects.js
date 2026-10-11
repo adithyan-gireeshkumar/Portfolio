@@ -1,4 +1,4 @@
-import phobiavrCover from "../assets/project-content/phobiavr /Pasted image.png"
+import phobiavrCover from "../assets/project-content/phobiavr/Pasted image.png"
 import { phobiavrContent } from "../assets/project-content/phobiavr";
 export const projects = [
 {
@@ -12,7 +12,12 @@ export const projects = [
   team: "Team of 10",
   context: "AR/VR Workshop – Young Innovator's Lab",
   image: phobiavrCover,
-  projectUrl: "https://realityforge.vercel.app/",
+  links: [
+  {
+    label: "Live Project",
+    url: "https://realityforge.vercel.app/",
+  },
+],
   content: phobiavrContent,
 },
 
@@ -40,10 +45,19 @@ export const projects = [
       "Filtering",
       "Role-based access",
     ],
-    links: {
-      officerGateway: "https://crime-database-management-system.vercel.app/",
-      officerPortal: "https://cdms-officer.vercel.app/",
-      publicPortal: "https://cdms-public.vercel.app/",
-    },
+ links: [
+  {
+    label: "Officer Gateway",
+    url: "https://crime-database-management-system.vercel.app/",
+  },
+  {
+    label: "Officer Portal",
+    url: "https://cdms-officer.vercel.app/",
+  },
+  {
+    label: "Public Portal",
+    url: "https://cdms-public.vercel.app/",
+  },
+],
   },
 ];

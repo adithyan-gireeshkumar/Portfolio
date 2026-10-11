@@ -27,7 +27,7 @@ const Blog7 = ({
       className={cn("py-32", className)}
       style={{
         background:
-          "linear-gradient(302deg, #7fe1de 0%, #0f85fa 50%, #0fe7fa 100%)",
+          "linear-gradient(162deg, #999999 4%, #616161 50%, #8a8a8a 96%)",
       }}
     >
       <div className="container mx-auto flex flex-col items-center gap-8">

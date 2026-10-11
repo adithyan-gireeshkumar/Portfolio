@@ -9,7 +9,7 @@ function Blogpost2({ className }) {
     <section
       className={cn("py-32 mt-0", className)}
       style={{
-        background: "linear-gradient(302deg, #7fe1de 0%, #0f85fa 50%, #0fe7fa 100%)",
+        background: "linear-gradient(162deg, #999999 4%, #616161 50%, #8a8a8a 96%)",
       }}
     >
       <div className="container mt-0 ml-3">
@@ -38,7 +38,7 @@ function Blogpost2({ className }) {
 
           <article className="">
             <img
-              src="https://pbs.twimg.com/profile_images/2036799891708715008/dCGXex_z_400x400.jpg"
+              src="../../Monochrome Graphic Novel Portrait.png"
               alt="placeholder"
               className="mt-0 mb-8 aspect-video w-full rounded-lg object-cover"
             />

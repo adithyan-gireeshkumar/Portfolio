@@ -1,6 +1,100 @@
 import { cn } from "cn";
 import { Button } from "@/components/ui/button";
+import { gsap } from "gsap";
+import { useEffect, useRef } from "react";
+import "./css/Cta39.css";
+import githubIcon from "../assets/social/github.png";
+import instagramIcon from "../assets/social/instagram.png";
+import linkedinIcon from "../assets/social/linkedin.png";
+import xIcon from "../assets/social/x.png";
 
+const PROXIMITY_RADIUS = 500;
+const PUSH_FORCE = 0.35;
+const TILT_AMOUNT = 0.1;
+const SPRING_STIFFNESS = 0.07;
+const BOUNCE_FRICTION = 0.9;
+const CURSOR_SMOOTHING = 0.75;
+
+const layout = {
+    rotation: [5, -5, 7.5, -10],
+    x: [-275, -100, 100, 275],
+    y: [10, -10, 25, -10],
+};
+
+const initialCursor = { x: 0, y: 0, vx: 0, vy: 0 };
+
+function useCardAnimation(spotlightRef) {
+  useEffect(() => {
+    const spotlight = spotlightRef.current;
+    if (!spotlight) return undefined;
+
+    const cursor = { ...initialCursor };
+    let previousCursor = { x: 0, y: 0 };
+    const cards = [...spotlight.querySelectorAll(".card")];
+    const spread = Math.min(275, Math.max(100, spotlight.clientWidth / 2 - 48));
+    const xPositions = [-spread, -spread / 3, spread / 3, spread];
+    const cardPhysics = cards.map((el, index) => {
+      const card = {
+        el,
+        restX: xPositions[index] ?? 0,
+        restY: layout.y[index] ?? 0,
+        restR: layout.rotation[index] ?? 0,
+        x: layout.x[index] ?? 0,
+        y: layout.y[index] ?? 0,
+        r: layout.rotation[index] ?? 0,
+        vx: 0,
+        vy: 0,
+        vr: 0,
+      };
+      gsap.set(el, {
+        x: card.x,
+        y: card.y,
+        rotation: card.r,
+        xPercent: -50,
+        yPercent: -50,
+        zIndex: index,
+      });
+      return card;
+    });
+
+    const onMove = (event) => {
+      cursor.vx = cursor.vx * CURSOR_SMOOTHING + (event.clientX - previousCursor.x) * (1 - CURSOR_SMOOTHING);
+      cursor.vy = cursor.vy * CURSOR_SMOOTHING + (event.clientY - previousCursor.y) * (1 - CURSOR_SMOOTHING);
+      cursor.x = event.clientX;
+      cursor.y = event.clientY;
+      previousCursor = { x: event.clientX, y: event.clientY };
+    };
+    const onLeave = () => {
+      cursor.vx = 0;
+      cursor.vy = 0;
+    };
+    const tick = () => {
+      const rect = spotlight.getBoundingClientRect();
+      cardPhysics.forEach((card) => {
+        const distance = Math.hypot(
+          cursor.x - (rect.left + rect.width / 2 + card.restX),
+          cursor.y - (rect.top + rect.height / 2 + card.restY),
+        );
+        const weight = distance > PROXIMITY_RADIUS ? 0 : 1 - distance / PROXIMITY_RADIUS;
+        card.vx = (card.vx + (card.restX + cursor.vx * weight * PUSH_FORCE - card.x) * SPRING_STIFFNESS) * BOUNCE_FRICTION;
+        card.vy = (card.vy + (card.restY + cursor.vy * weight * PUSH_FORCE - card.y) * SPRING_STIFFNESS) * BOUNCE_FRICTION;
+        card.x += card.vx;
+        card.y += card.vy;
+        card.r += ((card.restR + cursor.vx * weight * TILT_AMOUNT) - card.r) * SPRING_STIFFNESS;
+        gsap.set(card.el, { x: card.x, y: card.y, rotation: card.r });
+      });
+    };
+
+    spotlight.addEventListener("mousemove", onMove);
+    spotlight.addEventListener("mouseleave", onLeave);
+    gsap.ticker.add(tick);
+    return () => {
+      spotlight.removeEventListener("mousemove", onMove);
+      spotlight.removeEventListener("mouseleave", onLeave);
+      gsap.ticker.remove(tick);
+    };
+  }, [spotlightRef]);
+}
 const GitHubIcon = () => (
   <svg
     viewBox="0 0 24 24"
@@ -12,10 +106,9 @@ const GitHubIcon = () => (
   </svg>
 );
 
+
 const defaultProps = {
   heading: "Let’s Connect",
-  description:
-    "I build products, experiments, and learning projects across web, AI, and software engineering.",
   buttons: {
     primary: {
       text: "My Projects",
@@ -30,9 +123,11 @@ const defaultProps = {
 };
 
 const Cta39 = (props) => {
+  const spotlightRef = useRef(null);
+  useCardAnimation(spotlightRef);
+
   const {
     heading,
-    description,
     buttons,
     className,
     onPrimaryClick,
@@ -45,7 +140,7 @@ const Cta39 = (props) => {
     <section
       className={cn("w-full py-32", className)}
       style={{
-        background: "linear-gradient(35deg, #ff0015 0%, #d6d329 50%, #ffffff 100%)",
+        background: "linear-gradient(162deg, #ffffff 4%, #060909 18%, #d5d5d5 27%, #353737 84%, #1e2020 92%, #9c9c9c 96%)",
       }}
     >
       <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -54,9 +149,15 @@ const Cta39 = (props) => {
             <h2 className="text-2xl font-semibold tracking-tight md:text-4xl">
               {heading}
             </h2>
-            <p className="max-w-2xl text-muted-foreground lg:text-lg">
-              {description}
-            </p>
+            <section ref={spotlightRef} className="spotlight">
+        <div className="cards">
+            <a className="card" href="https://www.instagram.com/adithyan_gireeshkumar/" target="_blank" rel="noopener noreferrer"><img src={instagramIcon} alt="Instagram" /></a>
+            <a className="card" href="https://www.linkedin.com/in/adithyan-gireeshkumar-0b4015412/" target="_blank" rel="noopener noreferrer"><img src={linkedinIcon} alt="LinkedIn" /></a>
+            <a className="card" href="https://x.com/Aadi_NG" target="_blank" rel="noopener noreferrer"><img src={xIcon} alt="X" /></a>
+            <a className="card" href="https://github.com/adithyan-gireeshkumar" target="_blank" rel="noopener noreferrer"><img src={githubIcon} alt="GitHub" /></a>
+
+        </div>
+    </section>
             <div className="mt-2 flex flex-col gap-3 sm:flex-row">
               {buttons?.primary && (
                 <Button
