@@ -1,7 +1,7 @@
 .spotlight{
     position: relative;
     width: 100%;
-    min-height: 22rem;
+    min-height: 20rem;
     background-color: hsl(0, 0%, 100%);
     overflow: hidden;
     border-radius: 1rem;
@@ -38,6 +38,10 @@
 }
 
 @media (max-width: 640px){
+    .spotlight{
+        min-height: 19rem;
+    }
+
     .cards{
         height: 12rem;
     }

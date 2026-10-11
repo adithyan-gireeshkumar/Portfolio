@@ -8,14 +8,14 @@ import { Avatar, AvatarImage } from "@/components/ui/avatar";
 function Blogpost2({ className }) {
   return (
     <section
-      className={cn("py-32 mt-0", className)}
+      className={cn("mt-0 py-16 md:py-24 lg:py-32", className)}
       style={{
         background: "linear-gradient(162deg, #999999 4%, #616161 50%, #8a8a8a 96%)",
       }}
     >
-      <div className="container mt-0 ml-3">
+      <div className="container mx-auto mt-0 px-4 sm:px-6">
         <div className="relative flex flex-col justify-between gap-10 lg:flex-row">
-          <aside className="top-10 h-fit flex-shrink-0 lg:sticky lg:w-[300px] xl:w-[400px]">
+          <aside className="top-10 h-fit min-w-0 lg:sticky lg:w-[300px] xl:w-[400px]">
             <a
               className="mb-5 flex items-center gap-1 text-muted-foreground hover:text-primary"
               href="#"
@@ -23,7 +23,7 @@ function Blogpost2({ className }) {
               <ChevronUp className="h-full w-4" />
               Return to top
             </a>
-            <h1 className="mb-5 text-3xl font-bold text-balance lg:text-4xl">
+            <h1 className="mb-5 text-3xl font-bold text-balance sm:text-4xl">
               Take a look into my Portfolio.
             </h1>
             <div className="flex gap-3">
@@ -37,11 +37,11 @@ function Blogpost2({ className }) {
             </div>
           </aside>
 
-          <article className="">
+          <article className="min-w-0 max-w-full">
             <img
               src={portraitImage}
               alt="Graphic novel portrait"
-              className="mt-0 mb-8 aspect-video w-full rounded-lg object-cover"
+              className="mb-8 mt-0 aspect-video w-full rounded-lg object-cover"
             />
             <div className="prose dark:prose-invert">
             

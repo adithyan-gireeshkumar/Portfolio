@@ -25,8 +25,8 @@ const CaseStudy1 = ({ project, className }) => {
   }
 
   return (
-    <article className={cn("py-20 lg:py-28", className)}>
-      <div className="container">
+    <article className={cn("py-12 md:py-20 lg:py-28", className)}>
+      <div className="container mx-auto px-4 sm:px-6">
         <div className="mx-auto max-w-6xl">
 
           {/* Hero */}
@@ -45,12 +45,12 @@ const CaseStudy1 = ({ project, className }) => {
               )}
             </div>
 
-            <h1 className="mt-6 max-w-4xl text-5xl font-bold tracking-tight lg:text-7xl">
+            <h1 className="mt-6 max-w-4xl text-4xl font-bold tracking-tight sm:text-5xl lg:text-7xl">
               {project.title}
             </h1>
 
             {project.summary && (
-              <p className="mt-6 max-w-3xl text-xl leading-8 text-muted-foreground">
+              <p className="mt-6 max-w-3xl text-base leading-7 text-muted-foreground sm:text-xl sm:leading-8">
                 {project.summary}
               </p>
             )}
@@ -74,7 +74,7 @@ const CaseStudy1 = ({ project, className }) => {
           </header>
 
           {/* Metadata */}
-          <div className="mt-12 grid gap-6 border-y py-8 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-10 grid gap-6 border-y py-6 sm:grid-cols-2 sm:py-8 lg:mt-12 lg:grid-cols-4">
 
             {project.published && (
               <div>
@@ -127,10 +127,10 @@ const CaseStudy1 = ({ project, className }) => {
           </div>
 
           {/* Main Content */}
-          <div className="mt-16 grid gap-16 lg:grid-cols-[1fr_280px]">
+          <div className="mt-12 grid gap-12 lg:mt-16 lg:grid-cols-[minmax(0,1fr)_280px] lg:gap-16">
 
             {/* Article */}
-            <div className="max-w-3xl space-y-14">
+            <div className="min-w-0 max-w-3xl space-y-12 sm:space-y-14">
               {content?.sections?.map((section, index) => (
                 <ProjectSection
                   key={index}

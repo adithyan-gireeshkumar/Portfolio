@@ -31,16 +31,20 @@ function useCardAnimation(spotlightRef) {
     const cursor = { ...initialCursor };
     let previousCursor = { x: 0, y: 0 };
     const cards = [...spotlight.querySelectorAll(".card")];
+    const isMobile = spotlight.clientWidth < 640;
     const spread = Math.min(275, Math.max(100, spotlight.clientWidth / 2 - 48));
-    const xPositions = [-spread, -spread / 3, spread / 3, spread];
+    const xPositions = isMobile
+      ? [-60, 60, -60, 60]
+      : [-spread, -spread / 3, spread / 3, spread];
+    const yPositions = isMobile ? [-60, -60, 60, 60] : [10, -10, 25, -10];
     const cardPhysics = cards.map((el, index) => {
       const card = {
         el,
         restX: xPositions[index] ?? 0,
-        restY: layout.y[index] ?? 0,
+        restY: yPositions[index] ?? 0,
         restR: layout.rotation[index] ?? 0,
-        x: layout.x[index] ?? 0,
-        y: layout.y[index] ?? 0,
+        x: xPositions[index] ?? 0,
+        y: yPositions[index] ?? 0,
         r: layout.rotation[index] ?? 0,
         vx: 0,
         vy: 0,
@@ -144,7 +148,7 @@ const Cta39 = (props) => {
       }}
     >
       <div className="mx-auto w-full max-w-5xl px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto rounded-xl border border-dashed p-8 md:p-12 lg:p-16">
+        <div className="mx-auto rounded-xl border border-dashed p-4 sm:p-8 md:p-12 lg:p-16">
           <div className="flex flex-col items-center gap-4 text-center lg:gap-6">
             <h2 className="text-2xl font-semibold tracking-tight md:text-4xl">
               {heading}

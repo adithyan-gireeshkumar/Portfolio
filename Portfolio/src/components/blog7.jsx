@@ -24,20 +24,20 @@ const Blog7 = ({
 
   return (
     <section
-      className={cn("py-32", className)}
+      className={cn("py-16 md:py-24 lg:py-32", className)}
       style={{
         background:
           "linear-gradient(162deg, #999999 4%, #616161 50%, #8a8a8a 96%)",
       }}
     >
-      <div className="container mx-auto flex flex-col items-center gap-8">
+      <div className="container mx-auto flex w-full flex-col items-center gap-8 px-4 sm:px-6">
 
         <div className="text-center">
           <Badge variant="secondary" className="mb-6">
             {tagline}
           </Badge>
 
-          <h2 className="mb-3 text-5xl tracking-tighter text-pretty md:mb-4 lg:mb-6 lg:max-w-3xl lg:text-7xl">
+          <h2 className="mb-3 text-4xl tracking-tighter text-pretty sm:text-5xl md:mb-4 lg:mb-6 lg:max-w-3xl lg:text-7xl">
             {heading}
           </h2>
 
@@ -46,7 +46,7 @@ const Blog7 = ({
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+        <div className="grid w-full gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
 
           {projects.map((project) => (
 
