@@ -2,6 +2,7 @@ import { ChevronUp } from "lucide-react";
 import { cn } from "cn";
 
 import avatarImage from "../assets/1786373699126.jpeg";
+import portraitImage from "../assets/graphic-novel-portrait.png";
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 
 function Blogpost2({ className }) {
@@ -38,8 +39,8 @@ function Blogpost2({ className }) {
 
           <article className="">
             <img
-              src="../../Monochrome Graphic Novel Portrait.png"
-              alt="placeholder"
+              src={portraitImage}
+              alt="Graphic novel portrait"
               className="mt-0 mb-8 aspect-video w-full rounded-lg object-cover"
             />
             <div className="prose dark:prose-invert">
